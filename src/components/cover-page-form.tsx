@@ -5,7 +5,6 @@ import React, { useState, useEffect, useTransition } from "react";
 import * as z from "zod";
 import { format } from "date-fns";
 import {
-  School,
   Building2,
   CalendarClock,
   FileCode,
@@ -56,11 +55,11 @@ import {
   AlertDescription,
   AlertTitle,
 } from "@/components/ui/alert";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
 
 
 export const formSchema = z.object({
-  universityName: z.string().min(3, "University name is required."),
-  department: z.string().min(3, "Department is required."),
+  department: z.string().min(2, "Department is required."),
   session: z.string().min(3, "Session is required."),
   courseCode: z.string().min(3, "Course code is required."),
   teacherName: z.string().min(3, "Teacher's name is required."),
@@ -75,15 +74,13 @@ export const formSchema = z.object({
 });
 
 type InputFieldProps = {
-  name: keyof CoverPageData;
+  name: keyof Omit<CoverPageData, 'department' | 'submissionDate' | 'documentType' | 'topic'>;
   label: string;
   placeholder: string;
   icon: React.ElementType;
 };
 
 const inputFields: InputFieldProps[] = [
-  { name: "universityName", label: "University Name", placeholder: "e.g. University of Example", icon: School },
-  { name: "department", label: "Department", placeholder: "e.g. Computer Science & Engineering", icon: Building2 },
   { name: "session", label: "Session", placeholder: "e.g. Fall 2024", icon: CalendarClock },
   { name: "courseCode", label: "Course Code", placeholder: "e.g. CSE-101", icon: FileCode },
   { name: "teacherName", label: "Teacher's Name", placeholder: "e.g. Dr. Alan Turing", icon: User },
@@ -125,6 +122,7 @@ export default function CoverPageForm({ form }: { form: UseFormReturn<CoverPageD
     startTransition(async () => {
       const dataForAI = {
         ...formData,
+        universityName: "Chandpur Science and Technology",
         submissionDate: formData.submissionDate.toLocaleDateString('en-CA'),
       };
       
@@ -219,6 +217,32 @@ export default function CoverPageForm({ form }: { form: UseFormReturn<CoverPageD
             )}
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <FormField
+                control={form.control}
+                name="department"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Department</FormLabel>
+                    <Select onValueChange={field.onChange} defaultValue={field.value}>
+                      <FormControl>
+                        <div className="relative">
+                          <Building2 className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                          <SelectTrigger className="pl-10">
+                            <SelectValue placeholder="Select a department" />
+                          </SelectTrigger>
+                        </div>
+                      </FormControl>
+                      <SelectContent>
+                        <SelectItem value="CSE">CSE</SelectItem>
+                        <SelectItem value="ICT">ICT</SelectItem>
+                        <SelectItem value="BBA">BBA</SelectItem>
+                      </SelectContent>
+                    </Select>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
               {inputFields.map(({ name, label, placeholder, icon: Icon }) => (
                 <FormField
                   key={name}

@@ -36,6 +36,7 @@ function SubmittedBy({ name, id }: { name: string, id: string }) {
 
 export default function CoverPagePreview({ form }: { form: UseFormReturn<CoverPageData> }) {
   const data = form.watch();
+  const universityName = "Chandpur Science and Technology";
 
   const getTitle = () => {
     const docType = data.documentType || "document";
@@ -53,19 +54,18 @@ export default function CoverPagePreview({ form }: { form: UseFormReturn<CoverPa
         <header className="flex flex-col items-center text-center mb-16">
           <div className="mb-4">
              <Image
-                src="https://placehold.co/150x150.png"
-                alt="University Logo Placeholder"
+                src="/logo.png"
+                alt="University Logo"
                 width={120}
                 height={120}
-                data-ai-hint="university logo"
                 className="rounded-full"
               />
           </div>
           <h1 className="text-4xl font-extrabold text-primary tracking-wider uppercase">
-            {data.universityName || "University Name"}
+            {universityName}
           </h1>
           <p className="text-xl text-muted-foreground mt-2">
-            {data.department || "Department Name"}
+            Department of {data.department || "..."}
           </p>
         </header>
 

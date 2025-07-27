@@ -14,8 +14,7 @@ export default function Home() {
   const form = useForm<CoverPageData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      universityName: "",
-      department: "",
+      department: "CSE",
       session: "",
       courseCode: "",
       teacherName: "",
