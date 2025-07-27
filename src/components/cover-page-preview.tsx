@@ -53,7 +53,7 @@ export default function CoverPagePreview({ form }: { form: UseFormReturn<CoverPa
         <header className="flex flex-col items-center text-center mb-12">
           <div className="mb-4">
              <Image
-                src="public/logo.png"
+                src="https://github.com/IshtiAK47/Coverie/blob/master/public/logo.png"
                 alt="University Logo"
                 width={100}
                 height={100}
