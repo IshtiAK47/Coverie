@@ -55,8 +55,8 @@ export default function CoverPagePreview({ form }: { form: UseFormReturn<CoverPa
              <Image
                 src="https://raw.githubusercontent.com/IshtiAK47/Coverie/refs/heads/master/public/logo.png"
                 alt="University Logo"
-                width={100}
-                height={100}
+                width={400}
+                height={400}
                 className="rounded-full shadow-md"
                 data-ai-hint="university logo"
               />
