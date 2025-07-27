@@ -12,7 +12,7 @@ function Title({ text }: { text: string }) {
   return <h2 className="text-2xl font-bold text-primary tracking-tight text-center">{text}</h2>;
 }
 
-function SubmittedTo({ name, designation }: { name: string, designation: string }) {
+function SubmittedTo({ name, designation }: { name:string, designation: string }) {
   return (
     <div>
       <h3 className="text-lg font-semibold text-primary">Submitted To</h3>
@@ -54,11 +54,12 @@ export default function CoverPagePreview({ form }: { form: UseFormReturn<CoverPa
         <header className="flex flex-col items-center text-center mb-16">
           <div className="mb-4">
              <Image
-                src="/logo.png"
+                src="https://placehold.co/120x120.png"
                 alt="University Logo"
                 width={120}
                 height={120}
                 className="rounded-full"
+                data-ai-hint="university logo"
               />
           </div>
           <h1 className="text-4xl font-extrabold text-primary tracking-wider uppercase">
