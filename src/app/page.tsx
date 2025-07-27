@@ -31,7 +31,7 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       <header className="bg-primary text-primary-foreground p-4 shadow-md no-print">
-        <h1 className="text-2xl font-bold font-headline">CoverLetter Pro</h1>
+        <h1 className="text-2xl font-bold font-headline">Coverie</h1>
       </header>
       <main className="flex-grow grid grid-cols-1 lg:grid-cols-2">
         <div className="p-4 sm:p-6 md:p-8 overflow-y-auto no-print">
